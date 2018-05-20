@@ -1,0 +1,247 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../static/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/chart.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/js/plugins/datatables/jquery.dataTables.css">
+    <!--<link rel="stylesheet" type="text/css" href="../static/js/plugins/datatables/dataTables.bootstrap.css">-->
+
+    <style>
+        .label-server-info {
+            text-align: left !important;
+        }
+        .label-server-value {
+            margin-top: 6px;
+        }
+    </style>
+
+</head>
+
+<!--<body class="fixed sidebar-mini sidebar-mini-expand-feature skin-black-light">-->
+<body class="sidebar-mini skin-blue">
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Header Navbar: style can be found in header.less -->
+        <a href="index.html" class="logo">
+            <span class="logo-lg"><b>SDN Demo</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+            </div>
+        </nav>
+    </header>
+    <!-- Sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <ul class="sidebar-menu" id="sidebar-menu">
+                <li class="active bkcloud-sidebar-element">
+                    <a href="#" id="server-tab">
+                        <i class="fa fa-server" aria-hidden="true"></i>
+                        <span>Server</span>
+                    </a>
+                </li>
+
+                <li class="bkcloud-sidebar-element">
+                    <a href="#" id="client-tab">
+                        <i class="fa fa-user-md" aria-hidden="true"></i>
+                        <span>Client</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <h1 id="content-header-text">
+                Server information
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row server-tab-content">
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Server information</h3>
+                        </div>
+                        <div class="box-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="server-name" class="label-server label-server-info col-sm-5 control-label">
+                                        <i class="fa fa-info-circle margin-r-5"></i>Server name:</label>
+                                    <div class="col-sm-7 label-server-value">
+                                        <label id="server-name">Ha Manh Dong</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="server-hostname" class="label-server label-server-info col-sm-5 control-label">
+                                        <i class="fa fa-book margin-r-5"></i>Hostname:</label>
+                                    <div class="col-sm-7 label-server-value">
+                                        <label id="server-hostname">IoT</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="server-ip" class="label-server label-server-info col-sm-5 control-label">
+                                        <i class="fa fa-check-square-o margin-r-5"></i>Ip:</label>
+                                    <div class="col-sm-7 label-server-value">
+                                        <label id="server-ip">3573</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="col-lg-8 col-xlg-3 col-md-7">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Database information</h3>
+                        </div>
+                        <div class="box-body">
+                             <div class="table-responsive m-t-40">
+                            <table class="table table-hover v-middle" id="table-database">
+                                <thead>
+                                <tr>
+                                    <th> STT</th>
+                                    <th> Id</th>
+                                    <th> Name</th>
+                                    <th> Year of birth</th>
+                                    <th> Class</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <div class="text-center">
+                                <button class="btn btn-success" id="btn-show-database"
+                                        data-id="">
+                                    Show database
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row client-tab-content">
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Client information</h3>
+                        </div>
+                        <div class="box-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="client-name" class="label-server label-server-info col-sm-5 control-label">
+                                        <i class="fa fa-info-circle margin-r-5"></i>Client name:</label>
+                                    <div class="col-sm-7 label-server-value">
+                                        <label id="client-name">Ha Manh Dong</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="client-hostname" class="label-server label-server-info col-sm-5 control-label">
+                                        <i class="fa fa-book margin-r-5"></i>Hostname:</label>
+                                    <div class="col-sm-7 label-server-value">
+                                        <label id="client-hostname">IoT</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="client-ip" class="label-server label-server-info col-sm-5 control-label">
+                                        <i class="fa fa-check-square-o margin-r-5"></i>Ip:</label>
+                                    <div class="col-sm-7 label-server-value">
+                                        <label id="client-ip">3573</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="col-lg-8 col-xlg-3 col-md-7">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Database information</h3>
+                        </div>
+                        <div class="box-body">
+                             <div class="table-responsive m-t-40">
+
+                            <div class="text-center">
+                                <button class="btn btn-success" id="btn-query-database"
+                                        data-id="">
+                                    Query
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.1.0
+        </div>
+        <strong>Designed by <a href="#">Ha Manh Dong</a>.</strong>
+    </footer>
+</div>
+
+</body>
+
+<!-- Script Section -->
+
+<script type="text/javascript" src="../static/js/plugins/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../static/js/plugins/select2.min.js"></script>
+<script type="text/javascript" src="../static/js/plugins/moment.js"></script>
+<!--datatables script -->
+<script type="text/javascript" src="../static/js/plugins/datatables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../static/js/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<script src="../static/bower_components/bootstrap.min.js"></script>
+<script src="../static/bower_components/jquery.slimscroll.js"></script>
+<script src="../static/bower_components/adminlte.min.js"></script>
+
+<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="../static/js/server.js"></script>
+<script type="text/javascript" src="../static/js/client.js"></script>
+
+<!-- //Script Section -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#server-tab').click();
+    });
+</script>
+
+</html>
